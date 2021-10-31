@@ -1,0 +1,36 @@
+AGRFORTFISH:
+  title: Agriculture, foresterie, pêche
+  indice: 0
+CONSTR:
+  title: Construction
+  indice: 0
+INDUSENRG:
+  title: Industrie, y compris l'énergie
+  indice: 0
+MFG:
+  title: Fabrication
+  indice: 0
+OTHSERVACT:
+  title: Autres activités de services
+  indice: 1
+WHLEHTELTRANSP:
+  title: Commerce de gros, de détail, réparation, transport, hébergement, restauration
+  indice: 0
+SERV:
+  title: Autres activités de services
+  indice: 1
+FINANCEINS:
+  title: Finance et assurance
+  indice: 1
+INFCOMM:
+  title: Information, communication
+  indice: 1
+PUBADMINEDUSOC:
+  title: Administration publique, défense, éducation, santé, action sociale
+  indice: 1
+REALEST:
+  title: Services immobiliers
+  indice: 1
+PROSCISUPP:
+  title: Activités professionnelles, scientifiques, appui administratif
+  indice: 1

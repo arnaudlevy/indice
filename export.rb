@@ -1,9 +1,14 @@
-require 'smarter_csv'
+require 'csv'
+require 'yaml'
 
-data = 'oecd/DP_LIVE_31102021185423254.csv'
-csv = CSV.read data, quote_char: "\x00", headers: true
+# Load
+activities = YAML::load(File.open('_data/activities.yml'))
+csv = CSV.read 'oecd/DP_LIVE_31102021185423254.csv',
+                liberal_parsing: true,
+                headers: true
 
-data = []
+# Parse
+data = {}
 locations = []
 indicators = []
 subjects = []
@@ -21,7 +26,7 @@ csv.each do |line|
   frequency = line[4]
   frequencies << frequency
   time = line[5]
-  value = line[6]
+  value = line[6].to_f
   flag = line[7]
   next if measure == 'AGRWTH'
   data[location] ||= {}
@@ -48,6 +53,21 @@ puts frequencies
 puts
 puts 'measures:'
 puts measures
-data.each do |key, value|
-  File.write "_data/#{key}.yml", value.to_yml
+
+# Compute
+data.dup.each do |country_key, country_data|
+  country_data.each do |year, year_data|
+    total = 0.0
+    total_0 = 0.0
+    year_data.each do |code, percent|
+      indice = activities[code]['indice']
+      total_0 += (1.0 - indice) * percent
+      total += percent
+    end
+    indice = total_0 / total
+    data[country_key][year]['total'] = total
+    data[country_key][year]['indice'] = indice
+  end
+
+  File.write "_countries/#{country_key.to_s}.yml", country_data.to_yaml
 end
