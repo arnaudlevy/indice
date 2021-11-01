@@ -5,12 +5,39 @@ title: Pays
   <h1 class="mb-3">{{ page.title }}</h1>
 </header>
 
-{% assign countries = site.countries %}
+{% assign countries_by_indice = site.countries | sort: 'indice' | reverse %}
 
+<h2 class="my-5">Répartition par indice décroissant</h2>
+
+<canvas id="chart-indices" height="400"></canvas>
+<script>
+window.addEventListener('load', function () {
+  new Chart('chart-indices', {
+    type: 'horizontalBar',
+    data: {
+        labels: {{countries_by_indice | map: 'title' | jsonify}},
+        datasets: [
+            {
+                data: {{countries_by_indice | map: 'indice' | jsonify}},
+                backgroundColor: 'black'
+            }
+        ]
+    },
+    responsive: true,
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+});
+</script>
+
+<h2 class="my-5">Liste des pays</h2>
 <div class="row">
-    {% for country in countries %}
+    {% for country in site.countries %}
     <div class="col-md-4 mb-5">
-        <h2>{{country.title}}</h2>
+        <h3>{{country.title}}</h3>
         <span class="badge badge-primary">{{country.indice | round: 2}}</span>
         <a href="{{country.url}}" class="stretched-link">Voir le pays</a>
     </div>

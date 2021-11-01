@@ -4,3 +4,21 @@ layout: default
 <header>
   <h1 class="mb-3">{{ page.title }}</h1>
 </header>
+
+<h2 class="my-5">Indice par pays</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Année</th>
+            <th>Indice</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for country in page.countries %}
+            <tr>
+                <td><a href="/countries/{{country.code}}">{{country.title}}</a></td>
+                <td>{{country.indice | round: 2}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

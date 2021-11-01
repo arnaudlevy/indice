@@ -2,5 +2,49 @@
 layout: default
 ---
 <header>
-  <h1 class="mb-3">{{ page.title }}</h1>
+  <h1 class="mb-3">{{page.title}}</h1>
+  <h2><span class="badge badge-primary">{{page.indice | round: 2}}</span></h2>
 </header>
+
+<h2 class="my-5">Evolution de l'indice</h2>
+<canvas id="chart-years" height="100"></canvas>
+<script>
+window.addEventListener('load', function () {
+  new Chart('chart-years', {
+    type: 'line',
+    data: {
+        labels: {{page.years | map: 'title' | jsonify}},
+        datasets: [
+            {
+                data: {{page.years | map: 'indice' | jsonify}},
+                backgroundColor: 'black'
+            }
+        ]
+    },
+    responsive: true,
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+});
+</script>
+
+<h2 class="my-5">Indice par an</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Année</th>
+            <th>Indice</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for year in page.years %}
+            <tr>
+                <td><a href="/years/{{year.title}}">{{year.title}}</a></td>
+                <td>{{year.indice | round: 2}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

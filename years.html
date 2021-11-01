@@ -5,12 +5,39 @@ title: Années
   <h1 class="mb-3">{{ page.title }}</h1>
 </header>
 
-{% assign years = site.years | reverse %}
+<h2 class="my-5">Evolution de l'indice</h2>
+<canvas id="chart-years" height="100"></canvas>
+<script>
+window.addEventListener('load', function () {
+  new Chart('chart-years', {
+    type: 'line',
+    data: {
+        labels: {{site.years | map: 'title' | jsonify}},
+        datasets: [
+            {
+                data: {{site.years | map: 'indice' | jsonify}},
+                backgroundColor: 'black'
+            }
+        ]
+    },
+    responsive: true,
+    options: {
+      legend: {
+        display: false
+      }
+    }
+  });
+});
+</script>
 
+<h2 class="my-5">Indice par an</h2>
+
+{% assign years = site.years | reverse %}
 <div class="row">
     {% for year in years %}
     <div class="col-md-3 mb-5">
         <h2>{{year.title}}</h2>
+        <span class="badge badge-primary">{{year.indice | round: 2}}</span>
         <a href="{{year.url}}" class="stretched-link">Voir l'année</a>
     </div>
     {% endfor %}

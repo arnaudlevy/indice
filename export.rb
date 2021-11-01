@@ -81,15 +81,19 @@ data.each do |country_key, country_data|
     end
     countries[country_key]['indice'] = indice
     countries[country_key]['years'] ||= []
+    # As years are analyzed, indice will be replaced,
+    # so it will be the most recent one at the end
     countries[country_key]['years'] << {
-      'year' => year,
+      'title' => year,
       'indice' => indice
     }
     years[year] ||= {}
     years[year]['title'] = year
+    years[year]['indice'] = 0
     years[year]['countries'] ||= []
     years[year]['countries'] << {
-      'country' => country_key,
+      'title' => codes[country_key],
+      'code' => country_key,
       'indice' => indice
     }
     puts
@@ -97,12 +101,19 @@ data.each do |country_key, country_data|
   puts
   puts
 end
+# Average years
+years.each do |year, data|
+  indices = data['countries'].map { |value| value['indice'] }
+  # Average is quite a bad approximation
+  average =  indices.sum / indices.size.to_f
+  data['indice'] = average
+end
 
 # Write
 countries.each do |key, value|
   File.write "_countries/#{key.to_s}.md", "#{value.to_yaml}---"
 end
-
+#
 years.each do |key, value|
   File.write "_years/#{key.to_s}.md", "#{value.to_yaml}---"
 end
