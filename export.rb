@@ -3,6 +3,7 @@ require 'yaml'
 
 # Load
 activities = YAML::load(File.open('_data/activities.yml'))
+codes = YAML::load(File.open('_data/codes.yml'))
 csv = CSV.read 'oecd/DP_LIVE_31102021185423254.csv',
                 liberal_parsing: true,
                 headers: true
@@ -67,8 +68,14 @@ data.each do |country_key, country_data|
       total += percent
     end
     indice = total_0 / total
-    countries[country_key][year]['total'] = total
-    countries[country_key][year]['indice'] = indice
+    unless countries.has_key? country_key
+      countries[country_key] = {
+        'title' => codes[country_key]
+      }
+    end
+    countries[country_key][year] = indice
+    years[year] ||= {}
+    years[year][country_key] = indice
   end
 end
 
@@ -76,4 +83,8 @@ end
 
 countries.each do |key, value|
   File.write "_countries/#{key.to_s}.yml", value.to_yaml
+end
+
+years.each do |key, value|
+  File.write "_years/#{key.to_s}.yml", value.to_yaml
 end

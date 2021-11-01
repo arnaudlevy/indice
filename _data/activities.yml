@@ -12,13 +12,13 @@ MFG:
   indice: 0
 OTHSERVACT:
   title: Autres activités de services
-  indice: 1
+  indice: 0.5
 WHLEHTELTRANSP:
   title: Commerce de gros, de détail, réparation, transport, hébergement, restauration
   indice: 0
 SERV:
-  title: Autres activités de services
-  indice: 1
+  title: Activités de services
+  indice: 0.5
 FINANCEINS:
   title: Finance et assurance
   indice: 1
@@ -27,7 +27,7 @@ INFCOMM:
   indice: 1
 PUBADMINEDUSOC:
   title: Administration publique, défense, éducation, santé, action sociale
-  indice: 1
+  indice: 0.5
 REALEST:
   title: Services immobiliers
   indice: 1
