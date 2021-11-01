@@ -1,36 +1,48 @@
-AGRFORTFISH:
-  title: Agriculture, foresterie, pêche
-  indice: 0
-CONSTR:
-  title: Construction
-  indice: 0
-INDUSENRG:
-  title: Industrie, y compris l'énergie
-  indice: 0
-MFG:
-  title: Fabrication
-  indice: 0
-OTHSERVACT:
-  title: Autres activités de services
-  indice: 0.5
-WHLEHTELTRANSP:
-  title: Commerce de gros, de détail, réparation, transport, hébergement, restauration
-  indice: 0
 SERV:
   title: Activités de services
   indice: 0.5
-FINANCEINS:
-  title: Finance et assurance
-  indice: 1
-INFCOMM:
-  title: Information, communication
-  indice: 1
-PUBADMINEDUSOC:
-  title: Administration publique, défense, éducation, santé, action sociale
-  indice: 0.5
-REALEST:
-  title: Services immobiliers
-  indice: 1
+  note: "Si les activités de service sont orientées vers les besoins naturels, elles sont en 0 (ex: infirmière à domicile). Si ce sont des activités culturelles (ex: cours de musique). Les données utilisées ne permettent pas de détailler, on fait donc une approximation à 0.5."
 PROSCISUPP:
   title: Activités professionnelles, scientifiques, appui administratif
   indice: 1
+  note: La recherche scientifique et les tâches administratives sont exclusivement culturelles.
+PUBADMINEDUSOC:
+  title: Administration publique, défense, éducation, santé, action sociale
+  indice: 0.5
+  note: "L'éducation est à 1, la santé à 0. On fait une approximation à 0.5."
+AGRFORTFISH:
+  title: Agriculture, foresterie, pêche
+  indice: 0
+  note: Il n'est pas certain que 100% de la production soit orientée vers la satisfaction des besoins naturels, comme l'industrie papetière en est le contre-exemple, mais nous faisons l'approximation d'une production quasi-exclusivement tournée vers les besoins naturels.
+OTHSERVACT:
+  title: Autres activités de services
+  indice: 0.5
+  note: Même traitement que les activités de service.
+WHLEHTELTRANSP:
+  title: Commerce de gros, de détail, réparation, transport, hébergement, restauration
+  indice: 0
+  note: Là encore, nous faisons l'approximation du commerce et du transport entièrement tournés vers les besoins naturels. La présence dans le cluster de l'hébergement et de la restauration va également dans le sens de 0.
+CONSTR:
+  title: Construction
+  indice: 0
+  note: La construction d'une église est évidemment en 1, mais nous faisons l'approximation d'une construction quasi-exclusivement tournée vers les besoins naturels (habitation, production...).
+MFG:
+  title: Fabrication
+  indice: 0
+  note: Même traitement que l'industrie.
+FINANCEINS:
+  title: Finance et assurance
+  indice: 1
+  note: Toute l'activité financière et assurancielle est symbolique par nature.
+INDUSENRG:
+  title: Industrie, y compris l'énergie
+  indice: 0
+  note: Produire un téléphone est certainement davantage un besoin culturel qu'un besoin naturel, mais nous faisons l'approximation d'une industrie quasi-exclusivement tournée vers les besoins naturels. Cela sous-estime notamment la part d'énergie utilisée pour les industries symboliques.
+INFCOMM:
+  title: Information, communication
+  indice: 1
+  note: Toute l'activité d'information et de communication est symbolique par nature.
+REALEST:
+  title: Services immobiliers
+  indice: 1
+  note: Si l'immobilier peut-être lié à l'habitation et donc à 0, les services sont des constructions culturelles, donc à 1.

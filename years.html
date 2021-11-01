@@ -32,9 +32,8 @@ window.addEventListener('load', function () {
 
 <h2 class="my-5">Indice par an</h2>
 
-{% assign years = site.years | reverse %}
 <div class="row">
-    {% for year in years %}
+    {% for year in site.years %}
     <div class="col-md-3 col-6 mb-5">
         <h3>
             {{year.title}}

@@ -1,0 +1,198 @@
+---
+title: Méthodologie
+---
+
+<header>
+  <h1 class="mb-3">{{ page.title }}</h1>
+</header>
+
+<h2 class="my-5">Données</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            Nous nous appuyons sur le jeu de données de l'OCDE nommé
+            <a href="https://data.oecd.org/natincome/value-added-by-activity.htm" target="_blank" rel="noreferrer">
+                “OECD (2021), Value added by activity (indicator). doi: 10.1787/a8b2bd2b-en (Accessed on 31 October 2021)”
+            </a>.
+            Ce jeu de données est composé de 32.099 lignes, avec 2 indicateurs : le taux de croissance annuel et le pourcentage de valeur ajoutée.
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            Nous avons choisi d'utiliser ce second indicateur, afin de mesurer la part dans la production économique du pays de chacune des activités. C'est loin d'être parfait, et nous ne disposons par exemple pas de toute la valeur qui n'est pas mesurée par le biais des comptes nationaux, notamment le travail familial.
+        </p>
+    </div>
+</div>
+
+<h2 class="my-5">Indice par secteur d'activité</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            Pour chaque indicateur, nous attribuons un indice entre 0 (naturel) et 1 (culturel). Cette attribution manque de précision, et nous mentionnons ces imprécisions ci-dessous.
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            Les arbitrages compensant le manque de données précises ont été faits dans le sens d'une minimisation du travail symbolique (le 1).
+        </p>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Activité</th>
+                <th>Valeur</th>
+                <th>Représentation</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for hash in site.data.activities %}
+                {% assign activity = hash[1] %}
+                <tr>
+                    <td>{{activity.title}}</td>
+                    <td><b>{{activity.indice}}</b></td>
+                    <td>
+                        <input type="range" min="0" max="1" step="0.1" value="{{activity.indice}}" disabled>
+                    </td>
+                    <td><small>{{activity.note}}</small></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<h2 class="my-5">Exemple : France 2020</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            Une fois les données extraites et les indices attribués aux activités, nous pouvons calculer les indices par pays. L'activité “Agriculture, foresterie, pêche” a un indice de 0, sa valeur indicée est donc de 0 (1.79*0). L'activité “Activités de services” a un indice de 0.5, sa valeur indicée est donc de 39.89 (79.77*0.5). L'activité “Information, communication” a un indice de 1, sa valeur indicée est donc de 5.8 (1*5.8).
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            Pour calculer l'indice total, on fait la somme de toutes les valeurs indicées, que l'on ramène à la somme des valeurs totales.
+        </p>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Activité</th>
+                <th>Valeur</th>
+                <th>Indice</th>
+                <th>Valeur indicée</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Activités de services</td>
+                <td>79.77</td>
+                <td>0.5</td>
+                <td>39.89</td>
+            </tr>
+            <tr>
+                <td>Activités professionnelles, scientifiques, appui administratif</td>
+                <td>14.17</td>
+                <td>1</td>
+                <td>14.17</td>
+            </tr>
+            <tr>
+                <td>Administration publique, défense, éducation, santé, action sociale</td>
+                <td>23.39</td>
+                <td>0.5</td>
+                <td>11.7</td>
+            </tr>
+            <tr>
+                <td>Agriculture, foresterie, pêche</td>
+                <td>1.79</td>
+                <td>0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>Autres activités de services</td>
+                <td>2.8</td>
+                <td>0.5</td>
+                <td>1.4</td>
+            </tr>
+            <tr>
+                <td>Commerce de gros, de détail, réparation, transport, hébergement, restauration</td>
+                <td>16.43</td>
+                <td>0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>Construction</td>
+                <td>5.19</td>
+                <td>0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>Fabrication</td>
+                <td>10.53</td>
+                <td>0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>Finance et assurance</td>
+                <td>3.73</td>
+                <td>1</td>
+                <td>3.73</td>
+            </tr>
+            <tr>
+                <td>Industrie, y compris l'énergie</td>
+                <td>13.24</td>
+                <td>0</td>
+                <td>0.0</td>
+            </tr>
+            <tr>
+                <td>Information, communication</td>
+                <td>5.8</td>
+                <td>1</td>
+                <td>5.8</td>
+            </tr>
+            <tr>
+                <td>Services immobiliers</td>
+                <td>13.45</td>
+                <td>1</td>
+                <td>13.45</td>
+            </tr>
+            <tr>
+                <td><b>Total</b></td>
+                <td>190.3</td>
+                <td>90.13</td>
+                <td><b>0.47</b></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<h2 class="my-5">Explication des calculs par objet</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <p>
+            <b>Année</b><br>
+            L'indice par an est une moyenne des indices des pays mesurés. C'est un indicateur très imparfait, il serait beaucoup plus efficace de mesurer globalement la valeur ajoutée sur l'année, mais le jeu de données ne fournit pas ces chiffres. Dans chaque année, nous présentons la carte et le classement des indices des pays, en fonction des données disponibles.
+        </p>
+        <p>
+            <b><a href="/years">→ Parcourir les années</a></b>
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p>
+            <b>Pays</b><br>
+            L'indice du pays est en fait l'indice de la dernière année disponible. Pour chaque pays, nous présentons l'évolution dans le temps de l'indice, en fonction des données disponibles. Le jeu de données intègre deux zones, en plus des pays, l'Union Européenne et la zone Euro.
+        </p>
+        <p>
+            <b><a href="/countries">→ Parcourir les pays</a></b>
+        </p>
+    </div>
+</div>

@@ -6,6 +6,19 @@ layout: default
   <h2><span class="badge badge-primary">{{page.indice | round: 2}}</span></h2>
 </header>
 
+{% for country in site.countries %}
+    {% if next_is_next %}
+        {% assign next = country %}
+        {% assign next_is_next = false %}
+    {% endif %}
+    {% if country.title == page.title %}
+        {% assign previous = country_before %}
+        {% assign next_is_next = true %}
+    {% endif %}
+    {% assign country_before = country %}
+{% endfor %}
+{% include previous_next.html %}
+
 <h2 class="my-5">Evolution de l'indice</h2>
 <canvas id="chart-years" height="100"></canvas>
 <script>

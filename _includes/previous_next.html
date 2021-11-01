@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-6">
+        {% if previous != null %}
+        <a href="{{previous.url}}">
+            <b>← {{previous.title}}</b>
+        </a>
+        {% endif %}
+    </div>
+    <div class="col-6 text-right">
+        {% if next != null %}
+        <a href="{{next.url}}">
+            <b>{{next.title}} →</b>
+        </a>
+        {% endif %}
+    </div>
+</div>
