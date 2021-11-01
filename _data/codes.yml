@@ -1,46 +1,138 @@
-AUS: Australia
-AUT: Austria
-BEL: Belgium
-CZE: Czechia
-DNK: Denmark
-FIN: Finland
-FRA: France
-DEU: Germany
-GRC: Greece
-HUN: Hungary
-ISL: Iceland
-IRL: Ireland
-ITA: Italy
-JPN: Japan
-KOR: Korea
-LUX: Luxembourg
-MEX: Mexico
-NLD: Netherlands
-NZL: New Zealand
-NOR: Norway
-POL: Poland
-PRT: Portugal
-SVK: Slovakia
-ESP: Spain
-SWE: Sweden
-CHE: Switzerland
-TUR: Turkey
-GBR: United Kingdom
-CHL: Chile
-CHN: China
-EST: Estonia
-IND: India
-IDN: Indonesia
-RUS: Russian Federation
-SVN: Slovenia
-ZAF: South Africa
-EA: Euro area
-EU: Europe
-CAN: Canada
-USA: United States of America
-ISR: Israel
-BRA: Brazil
-LVA: El Salvador
-COL: Colombia
-CRI: Costa Rica
-LTU: Lithuania
+AUS:
+  title: Australia
+  alpha2: AU
+AUT:
+  title: Austria
+  alpha2: AT
+BEL:
+  title: Belgium
+  alpha2: BE
+CHE:
+  title: Switzerland
+  alpha2: CH
+CHL:
+  title: Chile
+  alpha2: CL
+CHN:
+  title: China
+  alpha2: CN
+CZE:
+  title: Czechia
+  alpha2: CZ
+DNK:
+  title: Denmark
+  alpha2: DE
+FIN:
+  title: Finland
+  alpha2: FI
+FRA:
+  title: France
+  alpha2: FR
+DEU:
+  title: Germany
+  alpha2: DE
+GRC:
+  title: Greece
+  alpha2: GR
+HUN:
+  title: Hungary
+  alpha2: HU
+ISL:
+  title: Iceland
+  alpha2: IS
+IRL:
+  title: Ireland
+  alpha2: IE
+ITA:
+  title: Italy
+  alpha2: IT
+JPN:
+  title: Japan
+  alpha2: JP
+KOR:
+  title: Korea
+  alpha2: KR
+LUX:
+  title: Luxembourg
+  alpha2: LE
+MEX:
+  title: Mexico
+  alpha2: MX
+NLD:
+  title: Netherlands
+  alpha2: NL
+NZL:
+  title: New Zealand
+  alpha2: NZ
+NOR:
+  title: Norway
+  alpha2: NO
+POL:
+  title: Poland
+  alpha2: PL
+PRT:
+  title: Portugal
+  alpha2: PT
+SVK:
+  title: Slovakia
+  alpha2: SK
+ESP:
+  title: Spain
+  alpha2: ES
+SWE:
+  title: Sweden
+  alpha2: SE
+TUR:
+  title: Turkey
+  alpha2: TR
+GBR:
+  title: United Kingdom
+  alpha2: GB
+EST:
+  title: Estonia
+  alpha2: EE
+IND:
+  title: India
+  alpha2: IN
+IDN:
+  title: Indonesia
+  alpha2: ID
+RUS:
+  title: Russian Federation
+  alpha2: RU
+SVN:
+  title: Slovenia
+  alpha2: SI
+ZAF:
+  title: South Africa
+  alpha2: ZA
+EA:
+  title: Euro area
+  alpha2:
+EU:
+  title: Europe
+  alpha2:
+CAN:
+  title: Canada
+  alpha2: CA
+USA:
+  title: United States
+  alpha2: US
+ISR:
+  title: Israel
+  alpha2: IL
+BRA:
+  title: Brazil
+  alpha2: BR
+LVA:
+  title: El Salvador
+  alpha2: SV
+COL:
+  title: Colombia
+  alpha2: CO
+CRI:
+  title: Costa Rica
+  alpha2: CR
+LTU:
+  title: Lithuania
+  alpha2: LT

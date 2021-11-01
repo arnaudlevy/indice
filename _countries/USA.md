@@ -1,5 +1,5 @@
 ---
-title: United States of America
+title: United States
 indice: 0.48048011943451546
 years:
 - title: '1997'

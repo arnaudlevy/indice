@@ -35,10 +35,13 @@ window.addEventListener('load', function () {
 {% assign years = site.years | reverse %}
 <div class="row">
     {% for year in years %}
-    <div class="col-md-3 mb-5">
-        <h2>{{year.title}}</h2>
-        <span class="badge badge-primary">{{year.indice | round: 2}}</span>
-        <a href="{{year.url}}" class="stretched-link">Voir l'année</a>
+    <div class="col-md-3 col-6 mb-5">
+        <h3>
+            {{year.title}}
+            <span class="badge badge-primary">{{year.indice | round: 2}}</span>
+        </h3>
+        <p class="mb-0">{{year.countries.size}} pays mesurés</p>
+        <a href="{{year.url}}" class="stretched-link btn btn-sm btn-light">Voir l'année</a>
     </div>
     {% endfor %}
 </div>

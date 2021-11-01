@@ -76,7 +76,7 @@ data.each do |country_key, country_data|
     puts "| Total | #{total.round(2)} | #{total_1.round(2)} | #{indice.round(2)} |"
     unless countries.has_key? country_key
       countries[country_key] = {
-        'title' => codes[country_key]
+        'title' => codes[country_key]['title']
       }
     end
     countries[country_key]['indice'] = indice
@@ -92,7 +92,7 @@ data.each do |country_key, country_data|
     years[year]['indice'] = 0
     years[year]['countries'] ||= []
     years[year]['countries'] << {
-      'title' => codes[country_key],
+      'title' => codes[country_key]['title'],
       'code' => country_key,
       'indice' => indice
     }

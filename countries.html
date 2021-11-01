@@ -36,10 +36,17 @@ window.addEventListener('load', function () {
 <h2 class="my-5">Liste des pays</h2>
 <div class="row">
     {% for country in site.countries %}
-    <div class="col-md-4 mb-5">
-        <h3>{{country.title}}</h3>
-        <span class="badge badge-primary">{{country.indice | round: 2}}</span>
-        <a href="{{country.url}}" class="stretched-link">Voir le pays</a>
+    <div class="col-md-4 col-6 mb-5">
+        <h3>
+            {{country.title}}
+            <span class="badge badge-primary">{{country.indice | round: 2}}</span>
+        </h3>
+        <p class="mb-0">
+            {{country.years.first.title}}
+            - {{country.years.last.title}}
+            ({{country.years.size}} ans)
+        </p>
+        <a href="{{country.url}}" class="stretched-link btn btn-sm btn-light">Voir le pays</a>
     </div>
     {% endfor %}
 </div>
