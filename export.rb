@@ -55,7 +55,9 @@ puts 'measures:'
 puts measures
 
 # Compute
-data.dup.each do |country_key, country_data|
+countries = {}
+years = {}
+data.each do |country_key, country_data|
   country_data.each do |year, year_data|
     total = 0.0
     total_0 = 0.0
@@ -65,9 +67,13 @@ data.dup.each do |country_key, country_data|
       total += percent
     end
     indice = total_0 / total
-    data[country_key][year]['total'] = total
-    data[country_key][year]['indice'] = indice
+    countries[country_key][year]['total'] = total
+    countries[country_key][year]['indice'] = indice
   end
+end
 
-  File.write "_countries/#{country_key.to_s}.yml", country_data.to_yaml
+# Write
+
+countries.each do |key, value|
+  File.write "_countries/#{key.to_s}.yml", value.to_yaml
 end
