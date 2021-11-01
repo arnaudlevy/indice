@@ -60,31 +60,49 @@ countries = {}
 years = {}
 data.each do |country_key, country_data|
   country_data.each do |year, year_data|
+    puts "#{codes[country_key]} #{year}"
     total = 0.0
-    total_0 = 0.0
+    total_1 = 0.0
+    puts "| Activité | Valeur | Indice | Valeur indicée |"
     year_data.each do |code, percent|
       indice = activities[code]['indice']
-      total_0 += (1.0 - indice) * percent
+      title = activities[code]['title']
+      value = indice * percent
+      total_1 += value
       total += percent
+      puts "| #{title} | #{percent.round(2)} | #{indice} | #{value.round(2)} |"
     end
-    indice = total_0 / total
+    indice = total_1 / total
+    puts "| Total | #{total.round(2)} | #{total_1.round(2)} | #{indice.round(2)} |"
     unless countries.has_key? country_key
       countries[country_key] = {
         'title' => codes[country_key]
       }
     end
-    countries[country_key][year] = indice
+    countries[country_key]['indice'] = indice
+    countries[country_key]['years'] ||= []
+    countries[country_key]['years'] << {
+      'year' => year,
+      'indice' => indice
+    }
     years[year] ||= {}
-    years[year][country_key] = indice
+    years[year]['title'] = year
+    years[year]['countries'] ||= []
+    years[year]['countries'] << {
+      'country' => country_key,
+      'indice' => indice
+    }
+    puts
   end
+  puts
+  puts
 end
 
 # Write
-
 countries.each do |key, value|
-  File.write "_countries/#{key.to_s}.yml", value.to_yaml
+  File.write "_countries/#{key.to_s}.md", "#{value.to_yaml}---"
 end
 
 years.each do |key, value|
-  File.write "_years/#{key.to_s}.yml", value.to_yaml
+  File.write "_years/#{key.to_s}.md", "#{value.to_yaml}---"
 end

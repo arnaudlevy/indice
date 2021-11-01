@@ -1,0 +1,29 @@
+title: Indice Meta
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "countries"
+    values:
+      layout: "country"
+  -
+    scope:
+      path: ""
+      type: "years"
+    values:
+      layout: "year"
+
+collections:
+  countries:
+    output: true
+  years:
+    output: true
+
+exclude:
+  - README.md

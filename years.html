@@ -1,0 +1,17 @@
+---
+title: Années
+---
+<header>
+  <h1 class="mb-3">{{ page.title }}</h1>
+</header>
+
+{% assign years = site.years | reverse %}
+
+<div class="row">
+    {% for year in years %}
+    <div class="col-md-3 mb-5">
+        <h2>{{year.title}}</h2>
+        <a href="{{year.url}}" class="stretched-link">Voir l'année</a>
+    </div>
+    {% endfor %}
+</div>

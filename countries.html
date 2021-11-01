@@ -1,0 +1,18 @@
+---
+title: Pays
+---
+<header>
+  <h1 class="mb-3">{{ page.title }}</h1>
+</header>
+
+{% assign countries = site.countries %}
+
+<div class="row">
+    {% for country in countries %}
+    <div class="col-md-4 mb-5">
+        <h2>{{country.title}}</h2>
+        <span class="badge badge-primary">{{country.indice | round: 2}}</span>
+        <a href="{{country.url}}" class="stretched-link">Voir le pays</a>
+    </div>
+    {% endfor %}
+</div>
